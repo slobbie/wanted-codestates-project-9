@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
+import Detail from './components/detail';
 import Filter from './components/filter';
 import Tag from './components/tag';
 
@@ -15,9 +16,10 @@ function App() {
       <Nav />
       <Filter />
       <Tag />
-      <Home />
       <Routes>
+        <Route path='/' element={<Home />} />
         <Route path='/register' element={<RegisterPage />} />
+        <Route path='/detail/*' element={<Detail />} />
       </Routes>
     </Section>
   );

@@ -1,15 +1,52 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Data from '../data/data.json';
+// import { detialReview } from '../redux/action';
+import { RootState } from '../redux/reducers';
+interface imgesDataModel {
+  id: number;
+  src: string;
+}
+
+interface reviewListDataModel {
+  comments: [];
+  createdAt: string;
+  description: string;
+  hashTags: [];
+  id: string;
+  images: imgesDataModel[];
+  likes: string;
+  review: string;
+  stars: number;
+  username: string;
+}
 
 const Grid = () => {
+  const dispatch = useDispatch();
+  const reviewList: any = useSelector(
+    (state: RootState) => state.review.review
+  );
+  console.log(reviewList);
+
   return (
     <Section>
       <Ul>
-        {Data.map((item) => {
+        {reviewList?.map((item: reviewListDataModel) => {
           return (
             <Li key={item.id}>
-              <Img src={item.src} alt='사진' />
+              <Img src={item.images[0].src} alt='사진' />
             </Li>
+          );
+        })}
+        {Data.map((item) => {
+          return (
+            <Link to={`/detail/${item.id}`} key={item.id}>
+              <Li>
+                <Img src={item.src} alt='사진' />
+              </Li>
+            </Link>
           );
         })}
       </Ul>
