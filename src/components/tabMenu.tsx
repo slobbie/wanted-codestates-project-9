@@ -2,6 +2,8 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Grid from './grid';
 import Peeds from './Peeds';
+import { IoMdGrid } from 'react-icons/io';
+import { BsViewList } from 'react-icons/bs';
 
 const TabMenu = () => {
   const [activeIndex, setActiveIndex] = useState(0); // active를 담아줄 상태값
@@ -15,13 +17,13 @@ const TabMenu = () => {
           className={activeIndex === 0 ? 'is-active isToggle' : 'Nottoggle'}
           onClick={() => tabClickHandler(0)}
         >
-          1
+          <IoMdGrid className='icon' />
         </Li>
         <Li
           className={activeIndex === 1 ? 'is-active isToggle' : 'Nottoggle'}
           onClick={() => tabClickHandler(1)}
         >
-          2
+          <BsViewList className='icon' />
         </Li>
       </TapMenu>
       {activeIndex ? <Peeds /> : <Grid />}
@@ -52,7 +54,15 @@ const TapMenu = styled.ul`
 `;
 
 const Li = styled.li`
-  width: 250px;
+  width: 100%;
   height: 50px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .icon {
+    width: 30px;
+    height: 30px;
+    color: black;
+  }
 `;
