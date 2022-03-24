@@ -1,12 +1,21 @@
+import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
+  const navigate = useNavigate();
+
+  const onClickRegister = () => {
+    navigate('register');
+  };
   return (
     <NavBar>
       <Logo src='https://i.balaan.io/mobile/img/icon/ico_logo.png'></Logo>
       <Box>
         <span className='box_span'>리뷰</span>
-        <button className='box_btn'>리뷰등록</button>
+        <button className='box_btn' onClick={onClickRegister}>
+          리뷰등록
+        </button>
       </Box>
     </NavBar>
   );
