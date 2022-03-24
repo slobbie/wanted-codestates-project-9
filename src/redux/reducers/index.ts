@@ -1,5 +1,11 @@
-import { combineReducers } from "redux";
+import { review } from './review';
 
-const rootReducer = combineReducers({});
+import { combineReducers } from 'redux';
+
+const rootReducer = combineReducers({
+  review,
+});
 
 export default rootReducer;
+
+export type RootState = ReturnType<typeof rootReducer>;

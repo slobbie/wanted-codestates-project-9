@@ -3,54 +3,56 @@ import Data from '../data/data.json';
 import { FiThumbsUp, FiShare2, FiHeart } from 'react-icons/fi';
 import Stars from './Star';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useMatch, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Peeds from './Peeds';
 
-const Peeds = () => {
+const Detail = () => {
   const [Toggle, setToggle] = useState(false); // active를 담아줄 상태값
   const tabClickHandler = (e: any) => {
     setToggle((prev) => !prev);
   }; // 저장된 인덱스 정보로 active 핸들링을 하기 위한 이벤트
-  const navigata = useNavigate();
+  const matchId = useMatch('/detail/:id');
+  const matchData =
+    matchId?.params.id &&
+    Data?.find((peed: any) => peed.id + '' === matchId?.params.id);
+  console.log(matchData);
   return (
     <Section>
-      {Data.map((peed) => {
-        return (
-          <Link to={`/datail/${peed.id}`}>
-            <PeedBox>
-              <Top>
-                <NickName>{peed.username}</NickName>
-                <Day>{peed.createdAt}</Day>
-              </Top>
-              <Img src={peed.src} />
-              <IconBox>
-                <FiThumbsUp className='icon Like' />
-                <FiShare2 className='icon Share' />
-                <FiHeart
-                  className={
-                    Toggle ? 'is-active icon Heart black' : 'icon Heart'
-                  }
-                  onClick={tabClickHandler}
-                />
-              </IconBox>
-              <P>{peed.likes}</P>
-              <Stars stars={peed.stars} />
-              <Desc>구매옵션{peed.description}</Desc>
-              <Review>{peed.review}</Review>
-              <CommentBox>
-                <InputBox>
-                  <input className='input' placeholder='댓글달기' />
-                  <button className='Btn'>게시</button>
-                </InputBox>
-              </CommentBox>
-            </PeedBox>
-          </Link>
-        );
-      })}
+      {matchData && (
+        <>
+          <PeedBox>
+            <Top>
+              <NickName>{matchData.username}</NickName>
+              <Day>날짜</Day>
+            </Top>
+            <Img src={matchData.src} />
+            <IconBox>
+              <FiThumbsUp className='icon Like' />
+              <FiShare2 className='icon Share' />
+              <FiHeart
+                className={Toggle ? 'is-active icon Heart black' : 'icon Heart'}
+                onClick={tabClickHandler}
+              />
+            </IconBox>
+            <P>{matchData.likes}</P>
+            <Stars stars={matchData.stars} />
+            <Desc>구매옵션{matchData.description}</Desc>
+            <Review>{matchData.review}</Review>
+            <CommentBox>
+              <InputBox>
+                <input className='input' placeholder='댓글달기' />
+                <button className='Btn'>게시</button>
+              </InputBox>
+            </CommentBox>
+          </PeedBox>
+        </>
+      )}
+      <Peeds />
     </Section>
   );
 };
-export default Peeds;
+export default Detail;
 
 const Section = styled.section`
   width: 100%;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -10,7 +11,9 @@ const Nav = () => {
   };
   return (
     <NavBar>
-      <Logo src='https://i.balaan.io/mobile/img/icon/ico_logo.png'></Logo>
+      <Link to='/'>
+        <Logo src='https://i.balaan.io/mobile/img/icon/ico_logo.png'></Logo>
+      </Link>
       <Box>
         <span className='box_span'>리뷰</span>
         <button className='box_btn' onClick={onClickRegister}>
