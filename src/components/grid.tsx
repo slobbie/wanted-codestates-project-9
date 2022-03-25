@@ -35,9 +35,11 @@ const Grid = () => {
       <Ul>
         {reviewList?.map((item: reviewListDataModel) => {
           return (
-            <Li key={item.id}>
-              <Img src={item.images[0].src} alt='사진' />
-            </Li>
+            <Link to={`/detail/${item.id}`} key={item.id}>
+              <Li>
+                <Img src={item.images[0].src} alt='사진' />
+              </Li>
+            </Link>
           );
         })}
         {Data.map((item) => {
