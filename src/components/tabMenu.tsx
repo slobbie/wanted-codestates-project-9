@@ -6,10 +6,10 @@ import { IoMdGrid } from 'react-icons/io';
 import { BsViewList } from 'react-icons/bs';
 
 const TabMenu = () => {
-  const [activeIndex, setActiveIndex] = useState(0); // active를 담아줄 상태값
+  const [activeIndex, setActiveIndex] = useState(0);
   const tabClickHandler = (index: number) => {
     setActiveIndex(index);
-  }; // 저장된 인덱스 정보로 active 핸들링을 하기 위한 이벤트
+  };
   return (
     <Section>
       <TapMenu>
