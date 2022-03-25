@@ -24,7 +24,7 @@ const Detail = () => {
           <PeedBox>
             <Top>
               <NickName>{matchData.username}</NickName>
-              <Day>날짜</Day>
+              <Day>{matchData.createdAt}</Day>
             </Top>
             <Img src={matchData.src} />
             <IconBox>
