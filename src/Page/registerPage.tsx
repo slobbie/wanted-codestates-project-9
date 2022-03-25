@@ -15,6 +15,7 @@ const RegisterPage = () => {
   const [photoAddList, setPhotoAddList] = useState<any>([]);
   const [starCount, setStarCount] = useState<number>(0);
   const navigate = useNavigate();
+
   const photoInput = React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
   const onClickHome = () => {

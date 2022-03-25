@@ -3,15 +3,14 @@ import Data from '../data/data.json';
 import { FiThumbsUp, FiShare2, FiHeart } from 'react-icons/fi';
 import Stars from './Star';
 import { useState } from 'react';
-import { useMatch, useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 import Peeds from './Peeds';
 
 const Detail = () => {
-  const [Toggle, setToggle] = useState(false); // active를 담아줄 상태값
+  const [Toggle, setToggle] = useState(false);
   const tabClickHandler = (e: any) => {
     setToggle((prev) => !prev);
-  }; // 저장된 인덱스 정보로 active 핸들링을 하기 위한 이벤트
+  };
   const matchId = useMatch('/detail/:id');
   const matchData =
     matchId?.params.id &&

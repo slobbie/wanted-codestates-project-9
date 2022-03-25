@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import Data from '../data/data.json';
 import { FiThumbsUp, FiShare2, FiHeart } from 'react-icons/fi';
 import Stars from './Star';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+
 interface imgesDataModel {
   id: number;
   src: string;
@@ -27,11 +27,10 @@ const Peeds = () => {
   const [Toggle, setToggle] = useState(false);
   const [itemLists, setItemLists] = useState(Data);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [target, setTarget] = useState<any>(null);
   const scrollEnd = useRef<any>();
   const tabClickHandler = (e: any) => {
     setToggle((prev) => !prev);
-  }; // 저장된 인덱스 정보로 active 핸들링을 하기 위한 이벤트
+  };
   const navigata = useNavigate();
 
   return (
@@ -70,7 +69,7 @@ const Peeds = () => {
         );
       })}
 
-      <div ref={setTarget}></div>
+      <div ref={scrollEnd}></div>
     </Section>
   );
 };
