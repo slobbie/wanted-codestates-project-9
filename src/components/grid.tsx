@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Data from '../data/data.json';
-// import { detialReview } from '../redux/action';
 import { RootState } from '../redux/reducers';
 interface imgesDataModel {
   id: number;
