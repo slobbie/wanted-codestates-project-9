@@ -1,3 +1,9 @@
+## BALAAN
+
+## 사용 스택
+
+`Typescript` `React` `Styled-Components` `recoil` `localStorage`
+
 ### Getting Started
 
 1. `clone` the repository,
